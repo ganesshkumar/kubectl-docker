@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 VERSION=`curl https://storage.googleapis.com/kubernetes-release/release/stable.txt`
 
@@ -9,7 +9,7 @@ if [[ exists == 0 ]]
 then
     echo "Version $Version exists. Nothing to do"
 else
-    docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD && \
+    docker login --u $DOCKER_USERNAME -p $DOCKER_PASSWORD && \
         sed -i "s/{{VERSION}}/$VERSION/g" Dockerfile && \
         docker build -t ganesshkumar/kubectl:$VERSION . && \
         docker push ganesshkumar/kubectl:$VERSION && \
