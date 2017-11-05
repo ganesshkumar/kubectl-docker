@@ -1,0 +1,9 @@
+build_push:
+    image: gitlab/dind
+    services:
+        - docker:dind
+    script:
+        - ./ci-script.sh
+    only:
+        - master
+
