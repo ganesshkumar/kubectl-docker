@@ -1,8 +1,12 @@
 FROM alpine:3.6
 
-MAINTAINER Ganessh Kumar <rpganesshkumar@gmail.com>
-
 ENV KUBE_VERSION={{VERSION}}
+
+LABEL org.label-schema.vcs-url="https://github.com/ganesshkumar/kubectl-docker" \
+      org.label-schema.vendor=ganesshkumar.com \
+      org.label-schema.name=kubectl \
+      org.label-schema.description="Alpine based docker image for kubectl"  \
+      com.ganesshkumar.license="Apache License 2.0"
 
 RUN apk add --update ca-certificates \
     && apk add --update -t deps curl \
